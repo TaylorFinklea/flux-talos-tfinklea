@@ -8,13 +8,13 @@ patches:
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-      name: kustomize-controller
-      namespace: flux-system
+        name: kustomize-controller
+        namespace: flux-system
       spec:
-      template:
-        spec:
-          containers:
-            - name: manager
-              envFrom:
-                - secretRef:
-                    name: sops-azurekeyvault-decryptor-service-principal
+        template:
+          spec:
+            containers:
+              - name: manager
+                envFrom:
+                  - secretRef:
+                      name: sops-azurekeyvault-decryptor-service-principal
