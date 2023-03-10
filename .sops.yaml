@@ -1,0 +1,7 @@
+creation_rules:
+- path_regex: \.(yml|yaml)
+  encrypted_regex: "(^(.*[Pp]ass.*)$)|(^(data|stringData)$)"
+  #age: age1k8mxus4jftcnd5jerd5cq7jwhc07kyztp0mcwrts60l6j9dd04rs767ua2
+  azure_keyvault: "https://kv-prod-usc-sops.vault.azure.net/keys/sops-key/16ba85a141534043807b4b50109695f9"
+
+
