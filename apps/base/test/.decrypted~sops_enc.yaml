@@ -1,7 +1,0 @@
-apiVersion: v1
-data:
-    sops: supersecretkey
-kind: Secret
-metadata:
-    creationTimestamp: null
-    name: sopstest
