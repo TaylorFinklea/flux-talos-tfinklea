@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: default
 resources:
   - sops_enc.yaml
-  - passtest_enc.yaml
