@@ -1,58 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-    name: test-nginx
-spec:
-    labels:
-        password: ENC[AES256_GCM,data:9B5wwUWvljBpX2yeKjjtiDg=,iv:rxfugfmTKFbPJYOIX3zyDPfli1BVmfgZgGH6PYqSa9k=,tag:4Dggx2Zn/yJcxn2jhyPN2Q==,type:str]
-    selector:
-        matchLabels:
-            run: test-nginx
-    replicas: 3
-    template:
-        metadata:
-            labels:
-                run: test-nginx
-        spec:
-            containers:
-                - name: test-nginx
-                  image: nginx
-                  ports:
-                    - containerPort: 80
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1jfqychyrvdeuqhe66fft92h2luy5hv7gln2g59zxg3n2nwv76c3selz2sc
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLVTI4M09SWUxhZEltcHFW
-            RVFmQ0JVT0tCcE5VUEVJR0s4ZVkzTUd2TVFVCmJlc1ZHYVN4VnRCM2l5U1AySkY2
-            QUk3VkJaL3RMQUU3QlZEQmJHTm15bXMKLS0tIEJOTm0rVTRNSEJoSUhybWdXaEtV
-            dUhDTWNFUGEzV2luNzR5QUhvNERjS3cKNPpl4sOZc+ozwnAh1/sNtcTmAhhZ0qcP
-            bOrxG16pg5JLo6X+TzWuZgpFs/ppN4ZY7CxX3P4P8IOApfoi3X/How==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-13T18:58:39Z"
-    mac: ENC[AES256_GCM,data:nBA/Clut3JT6G5a01fuDrZ24T8xItIJhHUKUhOqUOA42E+C1zZ6FwI1x9qMnWuVyYJ56fQg4jHcCrOiyUFZIHeLlInT+g45nJvSWlw/O1AOqmsBVcbo9dvCm2cTbrjvhle4P+h2b7Mt9LaBlUhckgr584X8PU1I70pVK4rZhPeE=,iv:55eU2xKHkLj4FUj0zyDWujrkGNzoxRrx+1Oi8Fg1oMQ=,tag:Ayr5AneVEGbJRP0aXr5hRA==,type:str]
-    pgp: []
-    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
-    version: 3.7.3
----
 apiVersion: v1
-kind: Service
+data:
+    sops: ENC[AES256_GCM,data:dCFc0utV+PnSh61bd0g=,iv:+CAFtWXflP1uAzVm8P+uTY8MjYeHVGtdDs23c/e951Q=,tag:lZN9fOof+pui0v8MnQUtSw==,type:str]
+kind: Secret
 metadata:
-    name: test-nginx
-    labels:
-        run: test-nginx
-spec:
-    type: LoadBalancer
-    ports:
-        - port: 80
-          protocol: TCP
-    selector:
-        run: test-nginx
+    creationTimestamp: null
+    name: sopstest
 sops:
     kms: []
     gcp_kms: []
@@ -62,14 +14,14 @@ sops:
         - recipient: age1jfqychyrvdeuqhe66fft92h2luy5hv7gln2g59zxg3n2nwv76c3selz2sc
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLVTI4M09SWUxhZEltcHFW
-            RVFmQ0JVT0tCcE5VUEVJR0s4ZVkzTUd2TVFVCmJlc1ZHYVN4VnRCM2l5U1AySkY2
-            QUk3VkJaL3RMQUU3QlZEQmJHTm15bXMKLS0tIEJOTm0rVTRNSEJoSUhybWdXaEtV
-            dUhDTWNFUGEzV2luNzR5QUhvNERjS3cKNPpl4sOZc+ozwnAh1/sNtcTmAhhZ0qcP
-            bOrxG16pg5JLo6X+TzWuZgpFs/ppN4ZY7CxX3P4P8IOApfoi3X/How==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmWVQ2cTBrcjVaRVNWYjFp
+            Q1B5WGxKdEpYWFV6S255T2NoZkVGOTRXMzJjCmhxVHZkeENhWVhKMTdUbVVlMnY2
+            ZnVOeDFjb2R1VExkNFNkVGhScVV5WUUKLS0tIE5YNlRXRVUwRW1kNEFlVlBsVE1a
+            QUloeWJxSHNPQTJsYXk5SklmeUl0NVEKfvxC6FSp819nrwCcz+LGDWUuihGv6ZWq
+            fshSReJHarN4p2e7HgLlCzpvcouejp6r35YHdWCMW14qcWd0dFTehg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-13T18:58:39Z"
-    mac: ENC[AES256_GCM,data:nBA/Clut3JT6G5a01fuDrZ24T8xItIJhHUKUhOqUOA42E+C1zZ6FwI1x9qMnWuVyYJ56fQg4jHcCrOiyUFZIHeLlInT+g45nJvSWlw/O1AOqmsBVcbo9dvCm2cTbrjvhle4P+h2b7Mt9LaBlUhckgr584X8PU1I70pVK4rZhPeE=,iv:55eU2xKHkLj4FUj0zyDWujrkGNzoxRrx+1Oi8Fg1oMQ=,tag:Ayr5AneVEGbJRP0aXr5hRA==,type:str]
+    lastmodified: "2023-03-13T19:01:23Z"
+    mac: ENC[AES256_GCM,data:leCFy0yMYWMFGGL5k/NcL8+lGDUxyELD/aaMzZympicYr2tFSWKG/rY/BjwwshsMUdiR87l5Vpm2UxGaHsurtvq1KJx7Cwu2fSFGGEDg4/yQtNkqMYHpAHM5ScDUYLOb/aUzsR81OioC5ukscJjssmiy7bC1gDr3PNZ30YeqycI=,iv:fup9u/8jHdY/ZW3tjFU57kcu5ibTF/mbUnOcMQm0Vj0=,tag:aIzoJnugDX5FPrSXUQKGfQ==,type:str]
     pgp: []
     encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
     version: 3.7.3
