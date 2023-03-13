@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
     name: test-nginx
 spec:
+    labels:
+        password: ENC[AES256_GCM,data:UtVAa6biYGlc51P2gzuwMcw=,iv:1+t4BjnHkCwyMe028kkoOORlz2H7zBGtI0wEL5IhQeQ=,tag:8+kEqvstHYHuB3yRItKgKA==,type:str]
     selector:
         matchLabels:
             run: test-nginx
@@ -23,17 +25,17 @@ sops:
     azure_kv: []
     hc_vault: []
     age:
-        - recipient: age1jfqychyrvdeuqhe66fft92h2luy5hv7gln2g59zxg3n2nwv76c3selz2sc
+        - recipient: age1k8mxus4jftcnd5jerd5cq7jwhc07kyztp0mcwrts60l6j9dd04rs767ua2
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOdWVMaWZXSlZlRWxTUmh1
-            S0t2QWFyY0tYTXhtWWpiNG51TWtUbnN5cmtnCndjSW9POGRxZ1ljQU1KOEtxQjgr
-            cUJZaTRZZjhRakQzQ3c5em13NlRaQVEKLS0tIGY4RDhUd2VONGg2Zks5a2ZkTndw
-            ZkNqakdZbEJ5U1VwOE5JT0dtaE5zcUEKOXvl9+fXSI9xskyzq5L1lk1hUk0I6AwO
-            b9ZVq8g9k2DtRhwgSEp9sg4XprvLe/WP/p2vVEk+SVkd+d18SUWeeg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1c3NLeU5sQUMxTVg1Z1U3
+            cnhGeUlDdUx6Z2NTOWJOQjFaNWVGa2Y3TDBzClR6UjZYaFhuR044ZFdqTk5FdDFx
+            ZXRKM0VTQ2djL3lOaDlYNXZBRWJLakUKLS0tIFpKZXZCUGVjNlN3UjBZdlhyMVgy
+            QzVqVFZ4RFFNaHEwQTlMbU9RcHRNejQKnouJnS3ogKMnug+1GReBtKim4JqmnHPE
+            shZjv4fYTJVeG3wo1lyvSGZy2pjeO+IgIeWMM32+HNk0Hv8OxkE6LA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-13T18:49:01Z"
-    mac: ENC[AES256_GCM,data:ROGjiy4t1LgBRfESMlJHeB9u6fVIkOv7z0aAgzOlX2WIPKcy7daKXdcpPtwIetr1//lIs998p75KcWJa5t4Jj08G6+mw3PcoOaZAitSywlgx7dBLYHfXY8w8hggdxvRXuqF1dkz4x8DD93RgnXeI6U3COt9hlNfpemeCDhXmcQY=,iv:HuHms35hxwaDlAOOb7pIINJwgZdgj9ImMrM5wnBRzds=,tag:uin0Tf2UAqWpCzh9J5sfaA==,type:str]
+    lastmodified: "2023-03-13T18:57:30Z"
+    mac: ENC[AES256_GCM,data:/0YjbzQL9p/am44hcZ9N84KiUSN7jCUSj6sY+ki8lVte5ac2n7R8eU/LVLKhFHi1OtLabpqSpYhLu5OAHE8N2LnppqVmKGsv1IU4c/RaMTDHlPCuNx5p+51XG/ayFaAZKH6IDNnX6gi0JPiAo3fzcIN5+TB67zpVxE+VDPkvSmI=,iv:Zhi/kGgTW3gdIz5G3zHkdD4blZ14z1yR00TAzHBB4Fw=,tag:P/0V425nCwVs8RUY4MDIqw==,type:str]
     pgp: []
     encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
     version: 3.7.3
@@ -44,7 +46,6 @@ metadata:
     name: test-nginx
     labels:
         run: test-nginx
-        password: ENC[AES256_GCM,data:pl+8VJeuJsl6TcnsEFnh,iv:P472rt/+kqCGN2T1do88hoNE6lqx8dv/TVVo9b/jjxg=,tag:dDXfcFRfM1bxGOsb7pIMKw==,type:str]
 spec:
     type: LoadBalancer
     ports:
@@ -58,17 +59,17 @@ sops:
     azure_kv: []
     hc_vault: []
     age:
-        - recipient: age1jfqychyrvdeuqhe66fft92h2luy5hv7gln2g59zxg3n2nwv76c3selz2sc
+        - recipient: age1k8mxus4jftcnd5jerd5cq7jwhc07kyztp0mcwrts60l6j9dd04rs767ua2
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOdWVMaWZXSlZlRWxTUmh1
-            S0t2QWFyY0tYTXhtWWpiNG51TWtUbnN5cmtnCndjSW9POGRxZ1ljQU1KOEtxQjgr
-            cUJZaTRZZjhRakQzQ3c5em13NlRaQVEKLS0tIGY4RDhUd2VONGg2Zks5a2ZkTndw
-            ZkNqakdZbEJ5U1VwOE5JT0dtaE5zcUEKOXvl9+fXSI9xskyzq5L1lk1hUk0I6AwO
-            b9ZVq8g9k2DtRhwgSEp9sg4XprvLe/WP/p2vVEk+SVkd+d18SUWeeg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB1c3NLeU5sQUMxTVg1Z1U3
+            cnhGeUlDdUx6Z2NTOWJOQjFaNWVGa2Y3TDBzClR6UjZYaFhuR044ZFdqTk5FdDFx
+            ZXRKM0VTQ2djL3lOaDlYNXZBRWJLakUKLS0tIFpKZXZCUGVjNlN3UjBZdlhyMVgy
+            QzVqVFZ4RFFNaHEwQTlMbU9RcHRNejQKnouJnS3ogKMnug+1GReBtKim4JqmnHPE
+            shZjv4fYTJVeG3wo1lyvSGZy2pjeO+IgIeWMM32+HNk0Hv8OxkE6LA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-13T18:49:01Z"
-    mac: ENC[AES256_GCM,data:ROGjiy4t1LgBRfESMlJHeB9u6fVIkOv7z0aAgzOlX2WIPKcy7daKXdcpPtwIetr1//lIs998p75KcWJa5t4Jj08G6+mw3PcoOaZAitSywlgx7dBLYHfXY8w8hggdxvRXuqF1dkz4x8DD93RgnXeI6U3COt9hlNfpemeCDhXmcQY=,iv:HuHms35hxwaDlAOOb7pIINJwgZdgj9ImMrM5wnBRzds=,tag:uin0Tf2UAqWpCzh9J5sfaA==,type:str]
+    lastmodified: "2023-03-13T18:57:30Z"
+    mac: ENC[AES256_GCM,data:/0YjbzQL9p/am44hcZ9N84KiUSN7jCUSj6sY+ki8lVte5ac2n7R8eU/LVLKhFHi1OtLabpqSpYhLu5OAHE8N2LnppqVmKGsv1IU4c/RaMTDHlPCuNx5p+51XG/ayFaAZKH6IDNnX6gi0JPiAo3fzcIN5+TB67zpVxE+VDPkvSmI=,iv:Zhi/kGgTW3gdIz5G3zHkdD4blZ14z1yR00TAzHBB4Fw=,tag:P/0V425nCwVs8RUY4MDIqw==,type:str]
     pgp: []
     encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
     version: 3.7.3
