@@ -20,4 +20,4 @@ patches:
                       name: sops-azurekeyvault-decryptor-service-principal
     target:
       kind: Deployment
-      name: 'kustomize-controller'
+      labelSelector: app.kubernetes.io/part-of=flux
