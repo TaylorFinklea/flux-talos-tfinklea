@@ -4,7 +4,10 @@ resources:
   - gotk-components.yaml
   - gotk-sync.yaml
 patches:
-  - patch: |
+  - target:
+      kind: Deployment
+      labelSelector: app.kubernetes.io/part-of=flux
+    patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
@@ -14,10 +17,7 @@ patches:
         template:
           spec:
             containers:
-              - name: manager
-                envFrom:
-                  - secretRef:
-                      name: sops-azurekeyvault-decryptor-service-principal
-    target:
-      kind: Deployment
-      labelSelector: app.kubernetes.io/part-of=flux
+            - name: manager
+              envFrom:
+              - secretRef:
+                  name: sops-azurekeyvault-decryptor-service-principal
