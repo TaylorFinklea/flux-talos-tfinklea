@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-    sops: ENC[AES256_GCM,data:tz1wnDNkT8d3rliCdBdzwaUjQDCohmD4yqSzYg==,iv:4Xx6u0uKOSYNyvBBkSx4mTnX1sNFN1Fx9UV2tQjP+Y4=,tag:Ioxf4tlvQeWKRFwmh1XmRQ==,type:str]
+    sops: ENC[AES256_GCM,data:vIWjjZgq8tNXoz57r/Y=,iv:B6XDqolNixLsTgnoULZ7EUdPcZNfmjup7UqehBP6aTU=,tag:W7jZjMP6ZSDW/lyaurQiog==,type:str]
 kind: Secret
 metadata:
     creationTimestamp: null
@@ -8,20 +8,16 @@ metadata:
 sops:
     kms: []
     gcp_kms: []
-    azure_kv: []
+    azure_kv:
+        - vault_url: https://kv-prod-usc-sops.vault.azure.net
+          name: sops-key
+          version: 907d3cff614f417dbb7fdd889b81e5e5
+          created_at: "2023-03-13T19:16:24Z"
+          enc: fMpc1B26TaJUP-A5vMP0eXyMeFd8M4EsI6jUCsLtY1vlss-mf_ahXvichuP_YnZsFKdbE_fecuNzoY3PlaxTuqMT3g_lHaBop-DXSGLghbAcKUeCs-FaE4m8H3bf68ALkgH_QW1j7LPsOBrL4OdN5PLnSYapj69NSUaUi2ExlyiUokhMZR6WUzEhEgHcxG440aw9efV32xYA0HIn8u64XTQ9E8r3JkBQo7ElMBrpnqx30WwgCRazBOjy4w1FJlDymDxkex89gctLxx6628BAZVOKzgIx6DG2FOJ6s4Uisl-R_xEAFz1BNUxbvgSfe2yFhLphgBapW3vTZnyp8WeirQ
     hc_vault: []
-    age:
-        - recipient: age1jfqychyrvdeuqhe66fft92h2luy5hv7gln2g59zxg3n2nwv76c3selz2sc
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrRUtSQWFkS1NzZlQ2d25S
-            dkFzSkpHclBHK1grdVMyZUFlS0V1aUl5c0RVCm1HODZpUE9rWTNyMWErckViUVlx
-            MUNwT1ZQZkxYOFdWQi9xZHA2bE5XOXcKLS0tIHRtWnA5bC9VSE55QnhlTS9ReDBP
-            RmRONlZHQUlaWmp4WXo3Tk9PcW05cUkK5haLDrNxV9c3OXVqF7N31twig53t4Hq8
-            8y2vR04isNBY6emi/kO4QIeA4yYBnUjN/sR4JWKBNtpLhc5ppAEdjw==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-13T19:08:19Z"
-    mac: ENC[AES256_GCM,data:/wtQvYDUsLyA+QswvLqQzijuRYUKxv2BD0+I82CBFCxreCPM/lA+TuvawfLSmMArGHgj+xjljaK/lALOMUmxonXVB1JDE9C4ANsypVrCG+ED6p+8jlF8b01tTxcdM399y7QtIMK/B4IUrqGzQsjvqtqiem7krxjRTrRU/exygqg=,iv:qXqoNYnfnYqyVKEK/rh7M791HLWS6cXv2yatGjQSxco=,tag:nWRpRcpoVLRB01EJk72xYg==,type:str]
+    age: []
+    lastmodified: "2023-03-13T19:16:26Z"
+    mac: ENC[AES256_GCM,data:32meGx0R37Q2guIWyGTspS8oHh3QUwVnTFR85BcnvcZn83qmnEFh8yYKHGoGo5NN/9qluq4AtMx379QX2af6xVhBEMw3aJevuXQSmLD/m5VkwfYQswJBqgbksrsrPzrIivKClw2bIiVfW9xQrC6GAkhCDrdXg758/2vI0AvhOtk=,iv:hEsliLKAXdm1EBLYegUVf5ZXeIO7fKWBHKFxkWW5GNM=,tag:QUJamvnJtStCCMsGVMSTAg==,type:str]
     pgp: []
     encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
     version: 3.7.3

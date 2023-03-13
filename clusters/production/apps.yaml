@@ -17,5 +17,5 @@ spec:
   timeout: 5m0s
   decryption:
     provider: sops
-    secretRef:
-      name: sops-age
+    # secretRef:
+    #   name: sops-age
