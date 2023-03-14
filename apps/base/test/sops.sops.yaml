@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+    sops: ENC[AES256_GCM,data:KYDVHSygCYYf4HjsJU1YV2N5ESBrfx/7cscoKQ==,iv:3C5PgBjYivP7FMUeW2NTlG7q2V29ZVIn/POClqamcl4=,tag:Dt4L9k/I1Y9+mYnryRxsdw==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: sopstest
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0elVHanJHZ3JheGhiVm0v
+            aERtRGtFRWNUa2gwekNuSk9FVi9nOUVKYUNJCmdXcFAvZTRwWHBqdGxOYlBreUxR
+            VnhSYStmanNKQ1cwRFVMak1wbnQ5cDQKLS0tIEdwaVAzN29tOVVpQUlwSFJXTzBk
+            UFdFV3dvSExEejNNUlh1L2N3c0QzRm8KBWMEhTPzyjxva2pB3GLrJ9u8MQ3Pkykm
+            51fnlP1mbx72/i+qAvMlQrSc+GcZPlFaYJtoPvWu60M5r9hn1n+8lg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-03-14T14:04:51Z"
+    mac: ENC[AES256_GCM,data:6k4GDTWLanoqkZHsuX7vTTCOPu0PPHDnr/TFTE/YZe51UW/DL6Wdzj9el2A+8+OFWIHb8cBIz9/rDtbJvdn0zxSoMvLN+GMuUvl21HWUkZo7tbbiTjJ7tNPHvfumw/M/xho04cg9YWqzbKxpq9mYZ4U9aiwBFVGVji5JPoYw6bM=,iv:XAd6WDdtoKRxbCm7LT6zzM+aLSXixgfXOlhLrzyL868=,tag:HsuLt6owea74qsA0nVHCMg==,type:str]
+    pgp: []
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
+    version: 3.7.3
