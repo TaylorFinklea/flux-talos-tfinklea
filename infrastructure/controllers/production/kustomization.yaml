@@ -4,5 +4,6 @@ resources:
   - ../base/weave-gitops
   - ../base/metallb
   - ../base/cert-manager
+  - ../base/traefik
   # - cert-manager.yaml
   # - ingress-nginx.yaml
