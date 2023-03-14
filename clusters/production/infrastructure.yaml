@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: infra-controllers
+  name: infrastructure
   namespace: flux-system
 spec:
   interval: 1h
@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./infrastructure/production/controllers
+  path: ./infrastructure/production
   prune: true
   wait: true
 # ---
