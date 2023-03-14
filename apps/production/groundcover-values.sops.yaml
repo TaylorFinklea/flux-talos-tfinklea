@@ -7,6 +7,7 @@ spec:
     values:
         global:
             groundcover_token: ENC[AES256_GCM,data:TwaZEqFJ9maNlKjzhgrWRvec7xa4tm0+U/raVTLv/Eg=,iv:h8EWcHjmbM17zqGlq74fnJzTvpthqeYk3NEebMA+ECw=,tag:SKHMXKbAzt75Jfna6eBkVg==,type:str]
+        clusterId: talos-tfinklea
 sops:
     kms: []
     gcp_kms: []
