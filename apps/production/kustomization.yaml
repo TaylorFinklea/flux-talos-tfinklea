@@ -3,5 +3,7 @@ kind: Kustomization
 resources:
   - ../base/podinfo
   - ../base/test
+  - ../base/groundcover
 patchesStrategicMerge:
   - podinfo-values.yaml
+  - groundcover-values.sops.yaml

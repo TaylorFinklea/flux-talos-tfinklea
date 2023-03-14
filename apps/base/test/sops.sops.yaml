@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-    sops: ENC[AES256_GCM,data:KYDVHSygCYYf4HjsJU1YV2N5ESBrfx/7cscoKQ==,iv:3C5PgBjYivP7FMUeW2NTlG7q2V29ZVIn/POClqamcl4=,tag:Dt4L9k/I1Y9+mYnryRxsdw==,type:str]
+    sops: ENC[AES256_GCM,data:97F2xgHyJ2AtvPYi0/PIi8Zs/l/Vd0kGOrACVw==,iv:AttBIvxPZIZM5YFio/NZoLfx0ACI1yexav7oIFyZOAs=,tag:VzM2SCmTdojjFhYOzTc2jQ==,type:str]
 kind: Secret
 metadata:
     creationTimestamp: null
@@ -14,14 +14,14 @@ sops:
         - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0elVHanJHZ3JheGhiVm0v
-            aERtRGtFRWNUa2gwekNuSk9FVi9nOUVKYUNJCmdXcFAvZTRwWHBqdGxOYlBreUxR
-            VnhSYStmanNKQ1cwRFVMak1wbnQ5cDQKLS0tIEdwaVAzN29tOVVpQUlwSFJXTzBk
-            UFdFV3dvSExEejNNUlh1L2N3c0QzRm8KBWMEhTPzyjxva2pB3GLrJ9u8MQ3Pkykm
-            51fnlP1mbx72/i+qAvMlQrSc+GcZPlFaYJtoPvWu60M5r9hn1n+8lg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3dG95UWhTUVN0NUNSbDFp
+            cFlYNGVYdUs2aGZDOUNGSndtYllPR2ZTT2lnCmVXZVBkeENpbUtHMDg3TkxicGl3
+            OFA1aXZUSXhCallTVnFtWElJaTc2QUEKLS0tIENxNmgzVll0d1d5T1MzWXo0S0lx
+            SGJhY1BxUzhUTmZ0cHoyQmxEN0F0ejAKi8A+0nhXmyR0kbb5Sx4yKqWn2DR+sV3J
+            9QHtGweBQfJEfEjHvcZ2aeTWddu5P2FF7TL0Pzyh3gGn+VDOHYn0TQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-03-14T14:04:51Z"
-    mac: ENC[AES256_GCM,data:6k4GDTWLanoqkZHsuX7vTTCOPu0PPHDnr/TFTE/YZe51UW/DL6Wdzj9el2A+8+OFWIHb8cBIz9/rDtbJvdn0zxSoMvLN+GMuUvl21HWUkZo7tbbiTjJ7tNPHvfumw/M/xho04cg9YWqzbKxpq9mYZ4U9aiwBFVGVji5JPoYw6bM=,iv:XAd6WDdtoKRxbCm7LT6zzM+aLSXixgfXOlhLrzyL868=,tag:HsuLt6owea74qsA0nVHCMg==,type:str]
+    lastmodified: "2023-03-14T15:33:31Z"
+    mac: ENC[AES256_GCM,data:4ncKYtqqX9Y23xXFRGkdDNMK3Sj7ZhCZFSINoans8UjLW0Tt1MZAuZqn5BOhNlrVuOr4fuhZFkmm9NnHJb/4X1NPrfshmbGpArHAQGOT5UIR+jfhXLOpmiIO1jZ9bJy4epRcC+8szQh07Zkm7+7VSC5D2KAzRBLsd+ZO9zy1g9Y=,iv:59j6N7AZiMlrvM2zWtlEH1j63ztHbXH359yf6OnScaw=,tag:MOBc7quzZZDuyDYex5Zf2w==,type:str]
     pgp: []
-    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)|(^(.*[Tt]oken.*)$)
     version: 3.7.3
