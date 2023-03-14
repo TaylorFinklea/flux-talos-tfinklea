@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: groundcover
+    namespace: groundcover
+spec:
+    values:
+        global:
+            groundcover_token: ENC[AES256_GCM,data:9CFx6gOf1jF9snhm9a3VmPeimwFYPuZV4PonqFNfttP5sHL+XeQ80tPApMd9g3HaKQUFEo+aUMvHYk9EzSLj25ncWF9+bNofglqEHOjgIjuuYiLbn3TN37H+0gKxANVY5bwBe+5LB+eY0eDLwoP6YwGF9ieeMX6SzNqyjd01AHLjkOXdrilH/a2pMWDacugRZCJY4ZW3yuw2X0AMGEl/9Kzz2lmcT5mx8tu4UOFTVlTpU97NNMJ1a7TpmYmHbmAyYOdciXDtGGfaNw5iNHldIymzf9zmH8xbZNtLMRAGS+htLDq/1Viz7eN5pOEzIO41rni7WWGFXkGfW6YUdnWd/LzPLRo8gCLG,iv:dLyGCCgK/KlvnBU4Uqq9b3TMGgVJPLcD8RUf9IV6JvU=,tag:qgIDoVYDIEulTbprCxYMqA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNMjROM2E3ZmRyQnVhMWpy
+            bktURURUTHAvTHVwRUdZVElQdi9lOStPeldzCk9lTGVveVlkQndRblZNenlpYkdW
+            alV4RG9pUkFSbERUNXR5b0dPSktCTWcKLS0tIHNwaUtBcUozNHZKRGQvaDh3bUpJ
+            OStka0hyajVmVHA2blBBK2hSUXFsL0UKy5IJZGVPq5HmlhrPA4fzHLVjJHOhnWzr
+            iVaVd7B+tGLKe4qOW0Bc2qWL24Oi0dEtVoXjUmd4Bss7e9INzXezWw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-03-14T15:33:30Z"
+    mac: ENC[AES256_GCM,data:nFz3rMeMHflXFx6qC7osDe6ppWUwSmHpxbashvCozsylEp1mx9HAJnnwPxh/cLr7yeHyAiT+o28iGyKLqfM7IAgwVGHMBDM2qaZmTwQyuZn3ug7dSK4viLujBZt0LyTWNjnAWougWWx1mhvY6wlkiq/tgEs7mLUEd65PGVV0Opc=,iv:eFOW0uucNZPaykj0CttuD1kVXa5M0DYmi8ir2K0603A=,tag:R9hd+nMazhfsUxxb1lNnpw==,type:str]
+    pgp: []
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)|(^(.*[Tt]oken.*)$)
+    version: 3.7.3
