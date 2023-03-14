@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: star.finklea.ninja
+  namespace: traefik-system
+spec:
+  secretName: star.finklea.ninja
+  dnsNames:
+    - '*.finklea.ninja'
+  issuerRef:
+    name: cloudflare-issuer
+    kind: Issuer
