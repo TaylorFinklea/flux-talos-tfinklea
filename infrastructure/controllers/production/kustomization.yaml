@@ -4,6 +4,6 @@ resources:
   - ../base/weave-gitops
   - ../base/metallb
   - ../base/jiva
-  - ../base/mayastor
+  # - ../base/mayastor
   - ../base/cert-manager
   - ../base/traefik
