@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: '21.x'
+      version: '21.1.x'
       sourceRef:
         kind: HelmRepository
         name: traefik
@@ -27,7 +27,7 @@ spec:
         port: 443
 
     deployment:
-      replicas: 2
+      replicas: 1
     service:
       spec:
         loadBalancerIP: '10.0.221.5'
@@ -44,7 +44,7 @@ spec:
             topologyKey: kubernetes.io/hostname
 
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 2
       maxReplicas: 3
       metrics:
@@ -70,7 +70,7 @@ spec:
 
     ingressRoute:
       dashboard:
-        enabled: true # We will use a custom ingressRoute with basic auth instead of the default one
+        enabled: false # We will use a custom ingressRoute with basic auth instead of the default one
 
     # The following lines are needed if you have an error like: error while building entryPoint web: error preparing server: error opening listener: listen tcp :80: bind: permission denied
     # It just means that Traefik is unable to listen to connections on the host because of a lack of permissions.
