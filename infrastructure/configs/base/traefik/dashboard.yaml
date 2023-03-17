@@ -16,5 +16,5 @@ spec:
       # Enable auth middleware
       # middlewares:
       #   - name: auth
-  # tls:
-  #   secretName: traefik.finklea.ninja
+  tls:
+    secretName: traefik.finklea.ninja
