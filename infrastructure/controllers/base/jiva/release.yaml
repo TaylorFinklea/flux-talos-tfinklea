@@ -31,7 +31,6 @@ spec:
                 path: /metadata/annotations
                 value:
                   'storageclass.kubernetes.io/is-default-class': true
-
             target:
               kind: StorageClass
               name: openebs-jiva-csi-default
