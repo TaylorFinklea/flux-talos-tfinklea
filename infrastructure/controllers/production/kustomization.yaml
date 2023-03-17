@@ -5,5 +5,5 @@ resources:
   - ../base/metallb
   - ../base/jiva
   - ../base/mayastor
-  # - ../base/cert-manager
-  # - ../base/traefik
+  - ../base/cert-manager
+  - ../base/traefik

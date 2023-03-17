@@ -3,7 +3,5 @@ kind: Kustomization
 resources:
   - ../base/jiva
   - ../base/mayastor
-  # - ../base/cert-manager
-  # - ../base/traefik
-  # - cluster-issuers.yaml
-  # - network-policies.yaml
+  - ../base/cert-manager
+  - ../base/traefik
