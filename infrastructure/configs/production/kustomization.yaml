@@ -4,5 +4,6 @@ resources:
   - ../base/cert-manager
   - ../base/jiva
   - ../base/mayastor
+  - ../base/traefik
   # - cluster-issuers.yaml
   # - network-policies.yaml
