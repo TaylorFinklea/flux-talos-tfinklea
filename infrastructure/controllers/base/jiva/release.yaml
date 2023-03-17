@@ -26,10 +26,10 @@ spec:
             target:
               kind: DaemonSet
               name: openebs-jiva-csi-node
-        patchesStrategicMerge:
-          - kind: StorageClass
-            apiVersion: apps/v1
-            metadata:
+          - patch:
+              - op: add
+                path: /metadata/annotations/storageclass.kubernetes.io/is-default-class
+                value: true
+            target:
+              kind: StorageClass
               name: openebs-jiva-csi-default
-              annotations:
-                storageclass.kubernetes.io/is-default-class: true
