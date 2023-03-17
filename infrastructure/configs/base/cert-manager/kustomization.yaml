@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - cert-manager.yaml
-  - cert-star-finklea-ninja.yaml
+  # - cert-star-finklea-ninja.yaml
