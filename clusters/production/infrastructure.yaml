@@ -42,8 +42,9 @@ spec:
   patches:
     - patch: |
         - op: add
-          path: /spec/template/spec/hostPID
-          value: true
+          path: /spec/template/spec
+          value: 
+            hostPID: true
       target:
         kind: DaemonSet
         name: openebs-jiva-csi-node
