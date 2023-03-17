@@ -39,15 +39,15 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  patches:
-    - patch: |
-        - op: add
-          path: /spec/template/spec/hostPID
-          value: true
-      target:
-        kind: DaemonSet
-        name: openebs-jiva-csi-node
-        namespace: openebs
+  # patches:
+  #   - patch: |
+  #       - op: add
+  #         path: /spec/template/spec/hostPID
+  #         value: true
+  #     target:
+  #       kind: DaemonSet
+  #       name: openebs-jiva-csi-node
+  #       namespace: openebs
   # patches:
   #   - patch: |
   #       - op: replace
