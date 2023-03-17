@@ -3,6 +3,8 @@ kind: HelmRelease
 metadata:
   name: traefik
   namespace: traefik-system
+  labels:
+    app.kubernetes.io/managed-by: 'Helm'
 spec:
   releaseName: traefik
   chart:
