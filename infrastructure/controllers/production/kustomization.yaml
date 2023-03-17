@@ -3,9 +3,7 @@ kind: Kustomization
 resources:
   - ../base/weave-gitops
   - ../base/metallb
-  - ../base/cert-manager
-  - ../base/traefik
   - ../base/jiva
   - ../base/mayastor
-  # - cert-manager.yaml
-  # - ingress-nginx.yaml
+  # - ../base/cert-manager
+  # - ../base/traefik
