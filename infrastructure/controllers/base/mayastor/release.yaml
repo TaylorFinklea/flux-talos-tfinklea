@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mayastor
+  namespace: mayastor
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: mayastor
+      version: '2.x'
+      sourceRef:
+        kind: HelmRepository
+        name: mayastor
+        namespace: mayastor
+      interval: 12h
