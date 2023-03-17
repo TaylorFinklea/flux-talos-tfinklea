@@ -70,7 +70,10 @@ spec:
 
     ingressRoute:
       dashboard:
-        enabled: false # We will use a custom ingressRoute with basic auth instead of the default one
+        enabled: true # We will use a custom ingressRoute with basic auth instead of the default one
+        tls:
+          secretName: star.finklea.ninja1
+        matchRule: Host(`traefik.finklea.ninja`) || PathPrefix(`/dashboard`) || PathPrefix(`/api`)
 
     # The following lines are needed if you have an error like: error while building entryPoint web: error preparing server: error opening listener: listen tcp :80: bind: permission denied
     # It just means that Traefik is unable to listen to connections on the host because of a lack of permissions.
