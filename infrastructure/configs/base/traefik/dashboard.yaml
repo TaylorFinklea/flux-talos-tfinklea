@@ -8,7 +8,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik-lenovo.finklea.ninja`)
+    - match: Host(`traefik.finklea.ninja`)
       kind: Rule
       services:
         - name: api@internal
@@ -17,4 +17,4 @@ spec:
       middlewares:
         - name: auth
   tls:
-    secretName: traefik-lenovo.finklea.ninja
+    secretName: traefik.finklea.ninja
