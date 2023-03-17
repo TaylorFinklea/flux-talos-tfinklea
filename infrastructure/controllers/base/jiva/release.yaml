@@ -16,3 +16,13 @@ spec:
       interval: 12h
   values:
     installCRDs: true
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - patch: 
+              - op: add
+                path: /spec/template/spec/hostPID
+                value: true
+            target:
+              kind: DaemonSet
+              name: openebs-jiva-csi-node

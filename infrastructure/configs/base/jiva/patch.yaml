@@ -1,9 +1,0 @@
-apiVersion: apps/v1                                                                                                                                                           │
-kind: DaemonSet
-metadata:
-  name: openebs-jiva-csi-node
-  namespace: openebs
-spec:
-  template:
-    spec:
-      hostPID: true
