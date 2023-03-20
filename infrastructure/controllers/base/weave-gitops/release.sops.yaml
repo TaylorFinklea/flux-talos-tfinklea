@@ -1,0 +1,58 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: weave-gitops
+    namespace: flux-system
+spec:
+    interval: 60m
+    chart:
+        spec:
+            chart: weave-gitops
+            version: '*'
+            sourceRef:
+                kind: HelmRepository
+                name: weave-gitops
+            interval: 12h
+    # https://github.com/weaveworks/weave-gitops/blob/main/charts/gitops-server/values.yaml
+    values:
+        resources:
+            requests:
+                cpu: 100m
+                memory: 64Mi
+            limits:
+                cpu: 1
+                memory: 512Mi
+        securityContext:
+            capabilities:
+                drop:
+                    - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+        adminUser:
+            create: true
+            username: admin
+            # Change password by generating a new hash with:
+            # https://docs.gitops.weave.works/docs/configuration/securing-access-to-the-dashboard/#login-via-a-cluster-user-account
+            # bcrypt hash for password "flux"
+            passwordHash: ENC[AES256_GCM,data:Z44RymmfZREvOU5Gg8J1OgAApBMLlwI0rTvKQ6PPieth6IM9Bku+FJNseiallapPtG4TzLT8s5xZTH5x,iv:IyCmvZWuy/nnmKx//rv76goFvcf8C8IMumE7Joy6j58=,tag:ylTTqrJIKQbMWpDiUAJmpQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEYjBIRE5MajBwdjVPYlVI
+            ajVFOWFFT3hEMXZDVzN5QVVXRmdEbEdjQ1FNCnU5U1BvM3dtN2g0a3BCOHpmR01j
+            WGc1Y0t0VWNPbWN1dWl4UjR1Q1VZVkUKLS0tIEc1UTBVWUdJSmF0S1lCN1JLSmh0
+            djZIdFMvWVc0NkNyWENRRC9pZms0YlkKrzbKgQqFj9U1HJRBzCJ6vS6gAoLDKRIU
+            RjS7EOYjppVvzE8OGlPD63fQ+64mPa3mNxUJXbS3xEfE1mHQPXPA8w==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-03-20T19:51:02Z"
+    mac: ENC[AES256_GCM,data:iJac4GZ1KYqkR+iFhi+akNEymZd15MBcY+MN7ncQxzMwtyXrCEx5l47BX5Xh/6ns1EFAIBvu8yfSsSTJQsIsensnvoBXp99iNXpimwizuyWdrjRVWLBHykHgqso77oQQFaXBYHM3YdhYy/izRXJIneiOGWG+pd1VYRfLtP36Cr4=,iv:ZtCWwIfRfq45st+U0kYf/Ja7+3gx9mI3DZ3RF0kmFlc=,tag:MWXHO7OYTHu8K79DaUT3hQ==,type:str]
+    pgp: []
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)|(^(.*[Tt]oken.*)$)
+    version: 3.7.3
