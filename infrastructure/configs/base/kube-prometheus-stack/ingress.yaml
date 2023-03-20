@@ -1,0 +1,56 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`grafana-lenovo.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: grafana
+          namespace: monitoring
+          port: 3000
+  tls:
+    secretName: star.finklea.ninja
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`prom-lenovo.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: prometheus-k8s
+          namespace: monitoring
+          port: 9090
+  tls:
+    secretName: star.finklea.ninja
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`alertmanager-lenovo.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: alertmanager-main
+          namespace: monitoring
+          port: 9093
+  tls:
+    secretName: star.finklea.ninja

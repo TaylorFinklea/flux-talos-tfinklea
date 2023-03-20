@@ -15,3 +15,21 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-api-key-secret
               key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: cloudflare-issuer
+  namespace: monitoring
+spec:
+  acme:
+    email: taylor.finklea@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: cloudflare-issuer-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-api-key-secret
+              key: api-token
