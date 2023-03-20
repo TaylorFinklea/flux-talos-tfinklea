@@ -4,4 +4,4 @@ namespace: monitoring
 resources:
   - namespace.yaml
   - repository.yaml
-  - release.yaml
+  - release.sops.yaml
