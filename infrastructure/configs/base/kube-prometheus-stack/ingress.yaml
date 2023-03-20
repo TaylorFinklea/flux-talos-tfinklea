@@ -8,7 +8,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`grafana-lenovo.finklea.ninja`)
+    - match: Host(`grafana.finklea.ninja`)
       kind: Rule
       services:
         - name: grafana
@@ -27,7 +27,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`prom-lenovo.finklea.ninja`)
+    - match: Host(`prom.finklea.ninja`)
       kind: Rule
       services:
         - name: prometheus-k8s
@@ -46,7 +46,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`alertmanager-lenovo.finklea.ninja`)
+    - match: Host(`alertmanager.finklea.ninja`)
       kind: Rule
       services:
         - name: alertmanager-main
