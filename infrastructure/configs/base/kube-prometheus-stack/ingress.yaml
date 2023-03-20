@@ -11,7 +11,7 @@ spec:
     - match: Host(`grafana.finklea.ninja`)
       kind: Rule
       services:
-        - name: grafana
+        - name: kube-prometheus-stack-grafana
           namespace: monitoring
           port: 3000
   tls:
@@ -30,7 +30,7 @@ spec:
     - match: Host(`prom.finklea.ninja`)
       kind: Rule
       services:
-        - name: prometheus-k8s
+        - name: kube-prometheus-stack-prometheus
           namespace: monitoring
           port: 9090
   tls:
@@ -49,7 +49,7 @@ spec:
     - match: Host(`alertmanager.finklea.ninja`)
       kind: Rule
       services:
-        - name: alertmanager-main
+        - name: kube-prometheus-stack-alertmanager
           namespace: monitoring
           port: 9093
   tls:
