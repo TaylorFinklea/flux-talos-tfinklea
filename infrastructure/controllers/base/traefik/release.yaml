@@ -28,9 +28,9 @@ spec:
 
     # deployment:
     #   replicas: 1
-    # service:
-    #   spec:
-    #     loadBalancerIP: '10.0.221.5'
+    service:
+      spec:
+        loadBalancerIP: '10.0.221.5'
     ingressRoute:
       dashboard:
         enabled: false
