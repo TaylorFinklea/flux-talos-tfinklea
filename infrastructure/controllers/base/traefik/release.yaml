@@ -87,21 +87,21 @@ spec:
       runAsNonRoot: false
       runAsUser: 0
 
-    extraObjects:
-      - apiVersion: v1
-        kind: Service
-        metadata:
-          name: traefik-api
-        spec:
-          type: ClusterIP
-          selector:
-            app.kubernetes.io/name: traefik
-            app.kubernetes.io/instance: traefik-default
-          ports:
-          - port: 9000
-            name: traefik
-            targetPort: 9000
-            protocol: TCP
+    # extraObjects:
+    #   - apiVersion: v1
+    #     kind: Service
+    #     metadata:
+    #       name: traefik-api
+    #     spec:
+    #       type: ClusterIP
+    #       selector:
+    #         app.kubernetes.io/name: traefik
+    #         app.kubernetes.io/instance: traefik-default
+    #       ports:
+    #       - port: 9000
+    #         name: traefik
+    #         targetPort: 9000
+    #         protocol: TCP
 
     # additionalArguments:
     # - "--api.insecure=true"
