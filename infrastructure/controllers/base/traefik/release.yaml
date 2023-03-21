@@ -34,39 +34,39 @@ spec:
     # This example pod anti-affinity forces the scheduler to put traefik pods
     # on nodes where no other traefik pods are scheduled.
     # It should be used when hostNetwork: true to prevent port conflicts
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-                app.kubernetes.io/instance: '{{ .Release.Name }}-{{ .Release.Namespace }}'
-            topologyKey: kubernetes.io/hostname
+    # affinity:
+    #   podAntiAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       - labelSelector:
+    #           matchLabels:
+    #             app.kubernetes.io/name: '{{ template "traefik.name" . }}'
+    #             app.kubernetes.io/instance: '{{ .Release.Name }}-{{ .Release.Namespace }}'
+    #         topologyKey: kubernetes.io/hostname
 
-    autoscaling:
-      enabled: false
-      minReplicas: 2
-      maxReplicas: 3
-      metrics:
-        - type: Resource
-          resource:
-            name: cpu
-            target:
-              type: Utilization
-              averageUtilization: 60
-        - type: Resource
-          resource:
-            name: memory
-            target:
-              type: Utilization
-              averageUtilization: 60
-      behavior:
-        scaleDown:
-          stabilizationWindowSeconds: 300
-          policies:
-            - type: Pods
-              value: 1
-              periodSeconds: 60
+    # autoscaling:
+    #   enabled: false
+    #   minReplicas: 2
+    #   maxReplicas: 3
+    #   metrics:
+    #     - type: Resource
+    #       resource:
+    #         name: cpu
+    #         target:
+    #           type: Utilization
+    #           averageUtilization: 60
+    #     - type: Resource
+    #       resource:
+    #         name: memory
+    #         target:
+    #           type: Utilization
+    #           averageUtilization: 60
+    #   behavior:
+    #     scaleDown:
+    #       stabilizationWindowSeconds: 300
+    #       policies:
+    #         - type: Pods
+    #           value: 1
+    #           periodSeconds: 60
 
     ingressRoute:
       dashboard:
@@ -78,6 +78,7 @@ spec:
     # The following lines are needed if you have an error like: error while building entryPoint web: error preparing server: error opening listener: listen tcp :80: bind: permission denied
     # It just means that Traefik is unable to listen to connections on the host because of a lack of permissions.
     # Hence the need for additional permissions.
+
     securityContext:
       capabilities:
         drop: [ALL]
