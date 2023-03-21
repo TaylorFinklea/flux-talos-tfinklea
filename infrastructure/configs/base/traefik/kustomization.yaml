@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - middleware.yaml
-  # - dashboard.yaml
+  - dashboard.yaml
