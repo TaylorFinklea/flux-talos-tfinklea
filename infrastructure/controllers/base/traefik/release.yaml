@@ -80,7 +80,7 @@ spec:
             traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
         spec:
           rules:
-          - host: traefik.finklea.ninja
+          - host: traefik-kube.finklea.ninja
             http:
               paths:
               - path: /

@@ -8,7 +8,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`grafana.finklea.ninja`)
+    - match: Host(`grafana-kube.finklea.ninja`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-grafana
@@ -27,7 +27,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`prom.finklea.ninja`)
+    - match: Host(`prom-kube.finklea.ninja`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-prometheus
@@ -46,7 +46,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`alertmanager.finklea.ninja`)
+    - match: Host(`alertmanager-kube.finklea.ninja`)
       kind: Rule
       services:
         - name: kube-prometheus-stack-alertmanager
