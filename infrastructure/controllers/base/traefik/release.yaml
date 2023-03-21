@@ -19,117 +19,57 @@ spec:
     remediation:
       retries: 3
   values:
-    # ports:
-    #   web:
-    #     port: 80
-    #     # redirectTo: websecure
-    #   websecure:
-    #     port: 443
-
-    # deployment:
-    #   replicas: 1
+    ports:
+      web:
+        port: 80
+        redirectTo: websecure
+      websecure:
+        port: 443
+    deployment:
+      replicas: 2
     service:
       spec:
         loadBalancerIP: '10.0.221.5'
-    ingressRoute:
-      dashboard:
-        enabled: false
-    additionalArguments:
-    - "--api.insecure=true"
-    # Create the service, middleware and Ingress used to expose the dashboard (can also be created in another way).
-    # /!\ Yes, you need to replace "changeme" password with a better one. /!\
-    extraObjects:
-      - apiVersion: v1
-        kind: Service
-        metadata:
-          name: traefik-api
-        spec:
-          type: ClusterIP
-          selector:
-            app.kubernetes.io/name: traefik
-            app.kubernetes.io/instance: traefik-default
-          ports:
-          - port: 8080
-            name: traefik
-            targetPort: 9000
-            protocol: TCP
-
-      - apiVersion: v1
-        kind: Secret
-        metadata:
-          name: traefik-dashboard-auth-secret
-        type: kubernetes.io/basic-auth
-        stringData:
-          username: admin
-          password: changeme
-
-      - apiVersion: traefik.containo.us/v1alpha1
-        kind: Middleware
-        metadata:
-          name: traefik-dashboard-auth
-        spec:
-          basicAuth:
-            secret: traefik-dashboard-auth-secret
-
-      - apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: traefik-dashboard
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
-        spec:
-          rules:
-          - host: traefik-kube.finklea.ninja
-            http:
-              paths:
-              - path: /
-                pathType: Prefix
-                backend:
-                  service:
-                    name: traefik-api
-                    port:
-                      name: traefik
     # This example pod anti-affinity forces the scheduler to put traefik pods
     # on nodes where no other traefik pods are scheduled.
     # It should be used when hostNetwork: true to prevent port conflicts
-    # affinity:
-    #   podAntiAffinity:
-    #     requiredDuringSchedulingIgnoredDuringExecution:
-    #       - labelSelector:
-    #           matchLabels:
-    #             app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-    #             app.kubernetes.io/instance: '{{ .Release.Name }}-{{ .Release.Namespace }}'
-    #         topologyKey: kubernetes.io/hostname
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: '{{ template "traefik.name" . }}'
+                app.kubernetes.io/instance: '{{ .Release.Name }}-{{ .Release.Namespace }}'
+            topologyKey: kubernetes.io/hostname
 
-    # autoscaling:
-    #   enabled: false
-    #   minReplicas: 2
-    #   maxReplicas: 3
-    #   metrics:
-    #     - type: Resource
-    #       resource:
-    #         name: cpu
-    #         target:
-    #           type: Utilization
-    #           averageUtilization: 60
-    #     - type: Resource
-    #       resource:
-    #         name: memory
-    #         target:
-    #           type: Utilization
-    #           averageUtilization: 60
-    #   behavior:
-    #     scaleDown:
-    #       stabilizationWindowSeconds: 300
-    #       policies:
-    #         - type: Pods
-    #           value: 1
-    #           periodSeconds: 60
+    autoscaling:
+      enabled: false
+      minReplicas: 2
+      maxReplicas: 3
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 60
+        - type: Resource
+          resource:
+            name: memory
+            target:
+              type: Utilization
+              averageUtilization: 60
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 300
+          policies:
+            - type: Pods
+              value: 1
+              periodSeconds: 60
 
-    # ingressRoute:
-    #   dashboard:
-    #     enabled: false # We will use a custom ingressRoute with basic auth instead of the default one
+    ingressRoute:
+      dashboard:
+        enabled: false # We will use a custom ingressRoute with basic auth instead of the default one
         # tls:
         #   secretName: star.finklea.ninja1
         # matchRule: Host(`traefik.finklea.ninja`) || PathPrefix(`/dashboard`) || PathPrefix(`/api`)
@@ -146,3 +86,60 @@ spec:
       runAsGroup: 0
       runAsNonRoot: false
       runAsUser: 0
+
+    # additionalArguments:
+    # - "--api.insecure=true"
+    # # Create the service, middleware and Ingress used to expose the dashboard (can also be created in another way).
+    # # /!\ Yes, you need to replace "changeme" password with a better one. /!\
+    # extraObjects:
+    #   - apiVersion: v1
+    #     kind: Service
+    #     metadata:
+    #       name: traefik-api
+    #     spec:
+    #       type: ClusterIP
+    #       selector:
+    #         app.kubernetes.io/name: traefik
+    #         app.kubernetes.io/instance: traefik-default
+    #       ports:
+    #       - port: 8080
+    #         name: traefik
+    #         targetPort: 9000
+    #         protocol: TCP
+
+    #   - apiVersion: v1
+    #     kind: Secret
+    #     metadata:
+    #       name: traefik-dashboard-auth-secret
+    #     type: kubernetes.io/basic-auth
+    #     stringData:
+    #       username: admin
+    #       password: changeme
+
+    #   - apiVersion: traefik.containo.us/v1alpha1
+    #     kind: Middleware
+    #     metadata:
+    #       name: traefik-dashboard-auth
+    #     spec:
+    #       basicAuth:
+    #         secret: traefik-dashboard-auth-secret
+
+    #   - apiVersion: networking.k8s.io/v1
+    #     kind: Ingress
+    #     metadata:
+    #       name: traefik-dashboard
+    #       annotations:
+    #         traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    #         traefik.ingress.kubernetes.io/router.middlewares: default-traefik-dashboard-auth@kubernetescrd
+    #     spec:
+    #       rules:
+    #       - host: traefik-kube.finklea.ninja
+    #         http:
+    #           paths:
+    #           - path: /
+    #             pathType: Prefix
+    #             backend:
+    #               service:
+    #                 name: traefik-api
+    #                 port:
+    #                   name: traefik
