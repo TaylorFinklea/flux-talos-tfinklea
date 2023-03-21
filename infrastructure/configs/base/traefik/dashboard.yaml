@@ -8,13 +8,13 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik.finklea.ninja`)
+    - match: Host(`traefik.finklea.ninja`) || PathPrefix(`/dashboard`) || PathPrefix(`/api`)
       kind: Rule
       services:
         - name: api@internal
           kind: TraefikService
       # Enable auth middleware
-      middlewares:
-        - name: auth
+      # middlewares:
+      #   - name: auth
   tls:
     secretName: star.finklea.ninja
