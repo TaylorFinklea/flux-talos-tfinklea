@@ -4,5 +4,5 @@ resources:
   - ../base/jiva
   # - ../base/mayastor
   - ../base/cert-manager
-  - ../base/traefik
+  # - ../base/traefik
   - ../base/kube-prometheus-stack
