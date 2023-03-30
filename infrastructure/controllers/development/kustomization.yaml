@@ -3,11 +3,11 @@ kind: Kustomization
 resources:
   - ../base/weave-gitops
   - ../base/jiva
-  # - ../base/metallb
+  - ../base/metallb
   # - ../base/cert-manager
   # - ../base/traefik
   - ../base/kube-prometheus-stack
   - ../base/loki-stack
   # - ../base/mayastor
-# patchesStrategicMerge:
-#   - metallb-values.yaml
+patchesStrategicMerge:
+  - metallb-values.yaml
