@@ -3,12 +3,11 @@ kind: Kustomization
 resources:
   - ../base/weave-gitops
   - ../base/jiva
-  - ../base/cilium-lb
   # - ../base/metallb
   # - ../base/cert-manager
   # - ../base/traefik
   - ../base/kube-prometheus-stack
   - ../base/loki-stack
   # - ../base/mayastor
-patchesStrategicMerge:
-  - ciliumlb-values.yaml
+# patchesStrategicMerge:
+#   - metallb-values.yaml
