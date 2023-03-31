@@ -5,4 +5,5 @@ resources:
   - ../base/cert-manager
   - ../base/traefik
   - ../base/kube-prometheus-stack
+  - ../base/weave-gitops
   # - ../base/mayastor
