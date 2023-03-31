@@ -36,3 +36,16 @@ spec:
   issuerRef:
     name: cloudflare-issuer
     kind: Issuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: star.finklea.ninja
+  namespace: kube-system
+spec:
+  secretName: star.finklea.ninja
+  dnsNames:
+    - '*.finklea.ninja'
+  issuerRef:
+    name: cloudflare-issuer
+    kind: Issuer
