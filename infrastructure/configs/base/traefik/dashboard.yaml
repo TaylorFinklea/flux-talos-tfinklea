@@ -12,6 +12,7 @@ spec:
       kind: Rule
       services:
         - name: traefik-api
+          namespace: traefik-system
           port: 9000
       # Enable auth middleware
       # middlewares:
