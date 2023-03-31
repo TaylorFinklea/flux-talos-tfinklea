@@ -1,18 +1,56 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: weave-gitops
-  namespace: flux-system
+  name: grafana
+  namespace: monitoring
 spec:
   entryPoints:
     - web
     - websecure
   routes:
-    - match: Host(`gitops-kube.finklea.ninja`)
+    - match: Host(`grafana-kube.finklea.ninja`)
       kind: Rule
       services:
-        - name: weave-gitops
-          namespace: flux-system
-          port: 9001
+        - name: kube-prometheus-stack-grafana
+          namespace: monitoring
+          port: 80
+  tls:
+    secretName: star.finklea.ninja
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`prom-kube.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: kube-prometheus-stack-prometheus
+          namespace: monitoring
+          port: 9090
+  tls:
+    secretName: star.finklea.ninja
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`alertmanager-kube.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: kube-prometheus-stack-alertmanager
+          namespace: monitoring
+          port: 9093
   tls:
     secretName: star.finklea.ninja
