@@ -6,4 +6,5 @@ resources:
   - ../base/traefik
   - ../base/kube-prometheus-stack
   - ../base/weave-gitops
+  - ../base/hubble
   # - ../base/mayastor
