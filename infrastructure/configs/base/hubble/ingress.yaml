@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hubble
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`hubble-kube.finklea.ninja`)
+      kind: Rule
+      services:
+        - name: hubble-ui
+          namespace: kube-system
+          port: 80
+  tls:
+    secretName: star.finklea.ninja
