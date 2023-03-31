@@ -11,8 +11,8 @@ spec:
     - match: Host(`traefik-kube.finklea.ninja`)
       kind: Rule
       services:
-        - name: api@internal
-          kind: TraefikService
+        - name: traefik-api
+          port: 9000
       # Enable auth middleware
       # middlewares:
       #   - name: auth
