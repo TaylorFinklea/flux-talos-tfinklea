@@ -1,0 +1,110 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: democratic-csi
+    namespace: democratic-csi
+spec:
+    interval: 30m
+    chart:
+        spec:
+            chart: zfs-nfs
+            version: 0.13.x
+            sourceRef:
+                kind: HelmRepository
+                name: democratic-csi
+                namespace: democratic-csi
+            interval: 12h
+    values:
+        node:
+            hostPID: true
+            driver:
+                extraEnv:
+                    - name: ISCSIADM_HOST_STRATEGY
+                      value: nsenter
+                    - name: ISCSIADM_HOST_PATH
+                      value: /usr/local/sbin/iscsiadm
+                iscsiDirHostPath: /usr/local/etc/iscsi
+                iscsiDirHostPathType: ""
+        driver: freenas-nfs
+        instance_id: null
+        httpConnection:
+            protocol: http
+            host: 10.0.0.12
+            port: 80
+            # use only 1 of apiKey or username/password
+            # if both are present, apiKey is preferred
+            # apiKey is only available starting in TrueNAS-12
+            apiKey: null
+            # username: root
+            # password:
+            allowInsecure: true
+            # use apiVersion 2 for TrueNAS-12 and up (will work on 11.x in some scenarios as well)
+            # leave unset for auto-detection
+            #apiVersion: 2
+        sshConnection:
+            host: server address
+            port: 22
+            username: root
+            # use either password or key
+            password: ""
+            privateKey: ENC[AES256_GCM,data:O6Ca3LnKKh1sj7a3EkKDlCdw9K/+/wcwtgR6iYCPPAOEw2nygXymR6d+PP9VNuDcPV2xvEHkKx0CzKVeYlTIb68z,iv:VNHro+PGHgRgHgaENNWt2KI6FFJDPuMkA4ofMLS2DLM=,tag:WpWf9ZHIJHHRK8wCnhVOTA==,type:str]
+        zfs:
+            # can be used to override defaults if necessary
+            # the example below is useful for TrueNAS 12
+            #cli:
+            #  sudoEnabled: true
+            #
+            #  leave paths unset for auto-detection
+            #  paths:
+            #    zfs: /usr/local/sbin/zfs
+            #    zpool: /usr/local/sbin/zpool
+            #    sudo: /usr/local/bin/sudo
+            #    chroot: /usr/sbin/chroot
+            # can be used to set arbitrary values on the dataset/zvol
+            # can use handlebars templates with the parameters from the storage class/CO
+            #datasetProperties:
+            #  "org.freenas:description": "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}/{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+            #  "org.freenas:test": "{{ parameters.foo }}"
+            #  "org.freenas:test2": "some value"
+            datasetParentName: tank/k8s/a/vols
+            # do NOT make datasetParentName and detachedSnapshotsDatasetParentName overlap
+            # they may be siblings, but neither should be nested in the other
+            detachedSnapshotsDatasetParentName: tank/k8s/a/snaps
+            datasetEnableQuotas: true
+            datasetEnableReservation: false
+            datasetPermissionsMode: "0777"
+            datasetPermissionsUser: 0
+            datasetPermissionsGroup: 0
+            #datasetPermissionsAcls:
+            #- "-m everyone@:full_set:allow"
+            #- "-m u:kube:full_set:allow"
+        nfs:
+            #shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+            shareHost: server address
+            shareAlldirs: false
+            shareAllowedHosts: []
+            shareAllowedNetworks: []
+            shareMaprootUser: root
+            shareMaprootGroup: wheel
+            shareMapallUser: ""
+            shareMapallGroup: ""
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4ODJQWWxUZnJhNFQwUHZh
+            ZzcvdlhEeGhOdnN6TjRwYk9HWms3U3lHRGdjCnNyZzJDWFY2VkErZm5DZ0F6UHVq
+            ekFIZFFOeEdHVmNXblY5SVF4ZVQxcUkKLS0tIFF5QzU5Z2lYdTVmNVJaZDFZRU9h
+            YnY2ZldNbGljbkp3eXQzeStJZWJ0dzgKORPVFCvHXyE+2us5WhBt4SP63tlGJJ+k
+            5N2PjtwZyGZjTuao1SX+uRqFJxAa0iB1kYRnLCp8PtlEffrtqm4Jzg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-04-10T17:20:47Z"
+    mac: ENC[AES256_GCM,data:HxzJ8cvMdnneJ3Ijc4EX0Zf8GgnsgpBZLFeaBaXT1FfiwkSje8g3moAtE3WmS8uuDi1I5C+zfaq7W4dQVpl9RGz8i44HKFL8b4h6hg4Om2I2PJIe/i/f7CFB54cH5muA60oa3Vitzx9YXrIa3SxM6mNrhcyHi2IbibbMcgNZYrQ=,iv:Ro3lR5qCYfeps+0cxVFWj0uh5dKrijPIcyuKDSy4uEY=,tag:KtMUDe4e6BwNFTqRC5mBxg==,type:str]
+    pgp: []
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)|(^(.*[Tt]oken.*)$)|(^(.*[Kk]ey.*)$)
+    version: 3.7.3

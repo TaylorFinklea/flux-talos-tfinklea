@@ -1,8 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: groundcover
+namespace: democratic-csi
 resources:
-  - secret.sops.yaml
   - namespace.yaml
   - repository.yaml
   - release.sops.yaml

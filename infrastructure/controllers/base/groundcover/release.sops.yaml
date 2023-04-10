@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: groundcover
+    namespace: groundcover
+spec:
+    releaseName: groundcover
+    chart:
+        spec:
+            chart: groundcover
+            sourceRef:
+                kind: HelmRepository
+                name: groundcover
+    interval: 50m
+    install:
+        remediation:
+            retries: 3
+    values:
+        global:
+            groundcover_token: ENC[AES256_GCM,data:ICsgSdXxxYfSZ4ItGyjsLXVwXHRZBz1Asd9L/CyXCd37QDGuBWLTGuAGw7Uhkeewas5wp6v8TBnngmhGdkZrY9yxhWeoFH97Q7Wl3rQ9FJg8TRDMDZzxk0wiSLgaP5IBawiibi+RZc2t1ZqgqU9mcTwVPZVfotAnN0FWFoMAq75xQqPljHephK6K2YHSS5Y7EuYgXwyLuurKEw2AaQ1qMBcsH5AzlJxK0u3QX7ry+ih/nQ9/tz73iOCakkDlcDwXqs0UV8ms8Kyry39f02qEtaUpgKi4MBt7IDnbQOeOP3ZEn/ZMV+DMNj/1+L5dF6FA/PmP84j4Hpm0tJPBiLvGNG+FGuqc5A8wqxiDP2mGbj7jMROaRxqtsg==,iv:Gf5O9uoBzNwpnu3TjE0iamE6aw+O+eCigx3pnUFia7c=,tag:VSgA0qXWQ41fcO4Sl0OjHg==,type:str]
+        clusterId: talos-tfinklea
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1qcyqkv37ymke7amppcr2l5leerq8nhr0z7g64tw0ngw8qurkza8qxgrems
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4c3lYOERTUHZFeDhIanJZ
+            Vjh0T3VOdGZydU43ZmNkS0h2Y3RMWkxQdzNJCi92cnlNdSsvVDFsSHpIOW5BaGhi
+            Y1Jib3FJeVN6OWVBWGVKWTlJb0NkdVUKLS0tIEhXd3BZZ053ZnZBODNEUGVxZHpQ
+            ZURYTzVvR3Znb0s1WXM3ZHRoZEZsbmcKSez/V1EtjzVRTcY0lWM0K8lbp9dR8aUu
+            x1G9Hbzok3Ag+0gByozPV/9/s3P/QxKpWa5pmq/qmNzdE/v1flaq1A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-04-10T17:20:04Z"
+    mac: ENC[AES256_GCM,data:0/xkqXEe15Q/AR6sS8jTuf7uA0R/bURXS4lDFMCgk5ijQ1DRe3W3q9MKdedyVlxR2pI1/vxWxkeqS/thpFyEBVy5jDzLkV0RJprEhQoREOe6yShNpweFfyTfqiGNjx9Y9O6NLf1/x+OZslAyxWCibnkjVUFPWQ46h55vjhMhft0=,iv:dh9qyTr5XYOLNpVX2WDUblxkxYYg9o425PItuzCYdLU=,tag:WFFa+6sI84gyn5DuZEqQ4Q==,type:str]
+    pgp: []
+    encrypted_regex: (^(.*[Pp]ass.*)$)|(^(data|stringData)$)|(^(.*[Tt]oken.*)$)|(^(.*[Kk]ey.*)$)
+    version: 3.7.3
