@@ -18,7 +18,6 @@ spec:
   values:
     global:
       groundcover_token: ENC[AES256_GCM,data:Dcdhs/5LnllklaRh9ZnpU/seF8Q435HsCZ17f7h/YaDC1QTRaCbOPRuBVW48WjwBG884VN9vWMZyskUGS1nxhPF1oqfe1Xjnj9VxbHXHbetU4I47S03dJ3tRpbcScLOevr6We6+g4xdtWJZnf/2WtGz9mHJAq8EWlGfyvd2RLWOIUQcbVkK3OqlLaUhJ5H/hf06E+1g2pLxy+tZFVuowHgsxLdWYopdmv8QB/no2ZbIJhKAvOA9shhjHlBTe9RnCTPESAkCsvFPMNYEuzn4FR16mY5WtRmNxOSqj4ev4tTU4m8BpghHX7M0Qcqskv/+myQI1hvLUXS3juRHV8yyd4coBBPtC142odkcUoAcFi+zGRNMmxDG0cg==,iv:PW4MBP56lo+GjaSsBXYAzUDBZM+XYLKPbfL/dbk3Yds=,tag:pWTkPhNzkn9fJEV3GoOJjg==,type:str]
-    clusterId: talos-tfinklea
     timescaledb-single:
       secrets:
         credentials:
