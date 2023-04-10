@@ -8,6 +8,6 @@ resources:
   - ../base/traefik
   - ../base/kube-prometheus-stack
   - ../base/loki-stack
-  # - ../base/groundcover
+  - ../base/groundcover
   # - ../base/mayastor
   # - ../base/cilium-lb
